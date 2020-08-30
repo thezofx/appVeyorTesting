@@ -11,17 +11,17 @@ environment:
   APPVEYOR_PVR_TAG: '0.1-beta'
   ANDROID_HOME: "C:\\android-sdk-windows"
   ANDROID_NDK_HOME: "C:\\android-sdk-windows\ndk"
-  APPVEYOR_A_TOKEN:
-    secure: tx8YD3ezskZ4ZlYRUTXpQw0yjzsCByi8lujOp5NuGSqFF+ClsALp20qtsrYFIOym
+  APPVEYOR_GITHUB_TOKEN:
+    secure: CyJDavtuRiRAUplYAlrX02y/OPTJtxSxcX8J6owjhAtkVL1Ssgtmr9IINqlIm+Fe
 
   APPVEYOR_API_TOKEN:
-    secure: pDVnsOqWnupLrKTbz/iZlZt6CkSTZVUMtXqTlp5tgHI=
+    secure: lSkVngPKGAlOGIR7Kvh7D4PQLdZvP3ovjAIe2J/KTsA=
 
   Key:
-    secure: S/ndMdbuwvlwmXKNJpfhhA==
+    secure: D/mbs92JP2P8+p0qLbdpNg==
 
   Store:
-    secure: vooKSgloguN6KbxV+b9stA==
+    secure: 0priMNZ6eNtpNG48zBObfQ==
 
   matrix:
 
@@ -124,7 +124,7 @@ for:
 
         $headers = @{ "Authorization" = "Bearer $token"; "Content-type" = "application/json" }
         
-        $accountName = 'ShootingKing-AM'
+        $accountName = 'thezofx'
         
         $projectSlug = $env:APPVEYOR_PROJECT_SLUG
 
@@ -170,7 +170,7 @@ for:
 
     before_deploy:
     - ps: >-    
-          $token = "token " + $env:APPVEYOR_A_TOKEN
+          $token = "token " + $env:APPVEYOR_GITHUB_TOKEN
           
           $releaseUrl = "https://api.github.com/repos/ShootingKing-AM/$env:APPVEYOR_PROJECT_NAME/releases"
           
