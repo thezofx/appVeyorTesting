@@ -11,6 +11,7 @@ environment:
   APPVEYOR_PVR_TAG: '0.1-beta'
   ANDROID_HOME: "C:\\android-sdk-windows"
   ANDROID_NDK_HOME: "C:\\android-sdk-windows\ndk"
+  GITHUB_USERNAME: "thezofx"
   APPVEYOR_GITHUB_TOKEN:
     secure: CyJDavtuRiRAUplYAlrX02y/OPTJtxSxcX8J6owjhAtkVL1Ssgtmr9IINqlIm+Fe
 
@@ -97,7 +98,7 @@ for:
         gradlew.bat assemble
         
         7z a PhonevrApk.zip %APPVEYOR_BUILD_FOLDER%\code\mobile\android\PhoneVR\app\build\outputs\apk\**\**\*.apk
-        
+
         appveyor PushArtifact PhonevrApk.zip
         
         cd "%APPVEYOR_BUILD_FOLDER%"
@@ -172,9 +173,9 @@ for:
     - ps: >-    
           $token = "token " + $env:APPVEYOR_GITHUB_TOKEN
           
-          $releaseUrl = "https://api.github.com/repos/ShootingKing-AM/$env:APPVEYOR_PROJECT_NAME/releases"
+          $releaseUrl = "https://api.github.com/repos/$env:GITHUB_USERNAME/$env:APPVEYOR_PROJECT_NAME/releases"
           
-          $releaseLatestUrl = "https://api.github.com/repos/ShootingKing-AM/$env:APPVEYOR_PROJECT_NAME/releases/latest"
+          $releaseLatestUrl = "https://api.github.com/repos/$env:GITHUB_USERNAME/$env:APPVEYOR_PROJECT_NAME/releases/latest"
           
           $releasebyTag =  $releaseUrl+"/tags/"+$env:APPVEYOR_PVR_TAG
           
