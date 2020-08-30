@@ -201,8 +201,7 @@ for:
       tag: $(APPVEYOR_PVR_TAG)
       release: PhoneVR-$(APPVEYOR_PVR_TAG)_$(APPVEYOR_BUILD_NUMBER)
       description: AppVeyor build\nBranch - $(APPVEYOR_REPO_BRANCH)\nOn Commit - $(APPVEYOR_REPO_COMMIT)\nDate - $(APPVEYOR_REPO_COMMIT_TIMESTAMP)
-      auth_token:
-        secure: tx8YD3ezskZ4ZlYRUTXpQw0yjzsCByi8lujOp5NuGSqFF+ClsALp20qtsrYFIOym
+      auth_token: $(APPVEYOR_GITHUB_TOKEN)
       artifact: PhoneVR-$(APPVEYOR_PVR_TAG)_$(APPVEYOR_BUILD_NUMBER)-$(APPVEYOR_REPO_BRANCH)
       force_update: true
       on:
