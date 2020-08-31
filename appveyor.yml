@@ -127,7 +127,7 @@ for:
 
         $headers = @{ "Authorization" = "Bearer $token"; "Content-type" = "application/json" }
         
-        $accountName = 'thezofx'
+        $accountName = $env:GITHUB_USERNAME
         
         $projectSlug = $env:APPVEYOR_PROJECT_SLUG
 
