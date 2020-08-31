@@ -92,10 +92,10 @@ for:
         cd %APPVEYOR_BUILD_FOLDER%
 
     build_script:
-    - ps : >-
+    - cmd : >-
         cd code\mobile\android\PhoneVR
         
-        if( $env:APPVEYOR_PULL_REQUEST_NUMBER ) { gradlew.bat assembleDebug} else { gradlew.bat assemble }
+        if %APPVEYOR_PULL_REQUEST_NUMBER% (echo "PR BUILD") else (echo "NON PR BUILD")
         
         7z a PhonevrApk.zip %APPVEYOR_BUILD_FOLDER%\code\mobile\android\PhoneVR\app\build\outputs\apk\**\**\*.apk
 
