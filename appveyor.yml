@@ -92,10 +92,14 @@ for:
         cd %APPVEYOR_BUILD_FOLDER%
 
     build_script:
-    - cmd : >-
+    - ps : >-
         cd code\mobile\android\PhoneVR
         
-        if %APPVEYOR_PULL_REQUEST_NUMBER% (echo "PR BUILD") else (echo "NON PR BUILD")
+        IF ($env:APPVEYOR_PULL_REQUEST_NUMBER){
+            assemble debug
+        } else {
+            assemble release
+        }
         
         7z a PhonevrApk.zip %APPVEYOR_BUILD_FOLDER%\code\mobile\android\PhoneVR\app\build\outputs\apk\**\**\*.apk
 
