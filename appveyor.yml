@@ -109,7 +109,7 @@ for:
         - job_name: Deploy
 
     build_script:
-    - cmd : echo "Waiting for Builds .."
+    - cmd : echo "Waiting for others jobs to finish"
 
     after_build:
     - ps: >-
