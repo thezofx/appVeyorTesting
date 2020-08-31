@@ -92,10 +92,10 @@ for:
         cd %APPVEYOR_BUILD_FOLDER%
 
     build_script:
-    - cmd : >-
+    - ps : >-
         cd code\mobile\android\PhoneVR
         
-        gradlew.bat assemble
+        if( $env:APPVEYOR_PULL_REQUEST_NUMBER ) { gradlew.bat assembleDebug} else { gradlew.bat assemble }
         
         7z a PhonevrApk.zip %APPVEYOR_BUILD_FOLDER%\code\mobile\android\PhoneVR\app\build\outputs\apk\**\**\*.apk
 
@@ -109,7 +109,7 @@ for:
         - job_name: Deploy
 
     build_script:
-    - cmd : echo "Waiting for Builds .."
+    - cmd : echo "Waiting for others jobs to finish"
 
     after_build:
     - ps: >-
