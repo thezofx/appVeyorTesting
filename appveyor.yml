@@ -96,9 +96,9 @@ for:
         cd code\mobile\android\PhoneVR
         
         IF ($env:APPVEYOR_PULL_REQUEST_NUMBER){
-            .\gradlew.bat assemble debug
+            .\gradlew.bat assembleDebug
         } else {
-            .\gradlew.bat assemble release
+            .\gradlew.bat assemble
         }
         
         7z a PhonevrApk.zip %APPVEYOR_BUILD_FOLDER%\code\mobile\android\PhoneVR\app\build\outputs\apk\**\**\*.apk
